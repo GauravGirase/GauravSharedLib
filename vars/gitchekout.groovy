@@ -1,4 +1,4 @@
 def call(giturl){
-    echo "${giturl}
+    echo "${giturl}"
     git branch: 'main', url: $giturl
 }
