@@ -1,3 +1,3 @@
-def call {
+def gitchekout {
    echo "Hello World"
 }
