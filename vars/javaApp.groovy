@@ -45,7 +45,7 @@ def call(String repoUrl){
             steps {
                 sshagent(['dev-server']) {
                     // some block
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${env.JOB_NAME} || true"
+//                     sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${env.JOB_NAME} || true"
                     sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker run -p 9000:8080 -d --name ${env.JOB_NAME} gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
             }
         }
