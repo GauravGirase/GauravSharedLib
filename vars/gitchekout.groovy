@@ -1,3 +1,4 @@
-def call(){
-    git branch: 'main', url: 'https://github.com/spring-projects/spring-petclinic.git'
+def call(giturl){
+    echo "${giturl}
+    git branch: 'main', url: $gitur
 }
