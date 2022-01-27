@@ -9,6 +9,10 @@ def login(){
                    }
 }
 
+def build(){
+    sh "docker build -t gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER} ."
+}
+
 def push(){
     sh "docker push gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
 }
