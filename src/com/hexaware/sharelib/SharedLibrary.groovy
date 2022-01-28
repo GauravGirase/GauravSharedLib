@@ -13,8 +13,8 @@ public class SharedLibrary {
     '''
   }
   
-  public void startBuild() {
-    steps.checkOut()
+  public void startCheckout() {
+    steps.checkOut("https://github.com/GauravGirase/springBootAppDemo.git")
   }
   
   
