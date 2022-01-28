@@ -10,11 +10,7 @@ public class SharedLibrary {
   public void startBuild(String name) {
     
     steps.stage('Checkout') {
-      steps.steps {
-            sh 'echo "Step 1"'
-            sh 'echo "Step 2"'
-            sh 'echo "Step 3"'
-         }
+      steps.git("branch: 'main', url: '${name}'")
      } 
   }
 }
