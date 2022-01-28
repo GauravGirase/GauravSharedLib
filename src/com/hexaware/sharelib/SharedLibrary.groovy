@@ -31,12 +31,14 @@ public class SharedLibrary {
   
   void pushDockerImage(String jobName, String buildNumber){
     
-    this.steps.withCredentials([this.steps.usernamePassword(credentialsId: 'dockerhubcredentials', passwordVariable: 'DOCKERPASS', usernameVariable: 'DOCKERUSERNAME')])
-                   {
-                        this.steps.sh "docker login -u ${DOCKERUSERNAME} -p ${DOCKERPASS}"
-                        this.steps.sh "docker push gauravdocker1234/${jobName}:${buildNumber}"
-                    }
-    
+    this.steps.withCredentials([this.steps.usernamePassword(
+          credentialsId: this.steps.dockerhubcredentials,
+          passwordVariable: 'DOCKERPASS',
+          usernameVariable: 'DOCKERUSERNAME'
+        )]){
+               this.steps.sh "docker login -u ${DOCKERUSERNAME} -p ${DOCKERPASS}"
+               this.steps.sh "docker push gauravdocker1234/${jobName}:${buildNumber}"
+           }
       }
   
   void removeLocalDockerImage(String jobName, String buildNumber){
