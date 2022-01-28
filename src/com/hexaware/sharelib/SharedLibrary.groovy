@@ -9,7 +9,9 @@ public class SharedLibrary {
   
   public void startBuild(String repoUrl) {
       steps.sh '''
+    git fetch origin
     git checkout ${repoUrl}
+    git tag ${tag}
       '''
   }
 }
