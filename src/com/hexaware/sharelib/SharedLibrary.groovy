@@ -32,7 +32,7 @@ public class SharedLibrary {
   void pushDockerImage(String jobName, String buildNumber){
     
     this.steps.withCredentials([this.steps.usernamePassword(
-          credentialsId: this.dockerhubcredentials,
+          credentialsId: 'dockerhubcredentials',
           passwordVariable: 'DOCKERPASS',
           usernameVariable: 'DOCKERUSERNAME'
         )]){
