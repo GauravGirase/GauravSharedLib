@@ -7,8 +7,8 @@ public class SharedLibrary {
     this.steps = steps
   }
   
-  public void startBuild(Map config) {
-    gitcheckout(config.repoUrl)
+  public void startBuild() {
+    steps.echo "Hello World..."
   }
 }
 
