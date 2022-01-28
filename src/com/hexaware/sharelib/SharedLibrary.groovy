@@ -8,6 +8,10 @@ public class SharedLibrary {
   }
   
   public void startBuild(Map config) {
-    steps.git"{ branch: '${Map.main}', url: '${Map.repoUrl}'}"
+    steps.gitcheckout(config.repoUrl)
   }
+}
+
+def gitcheckout(String repoUrl){
+    git branch: 'main', url: '${repoUrl}'
 }
