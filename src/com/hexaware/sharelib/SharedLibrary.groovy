@@ -22,6 +22,12 @@ public class SharedLibrary {
     this.steps.sh "mvn clean package"
     
   }
+  
+  void buildDockerImage(){
+    
+    this.steps.sh "docker build -t gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER} ."
+    
+  }
  
  
 }
