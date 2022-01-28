@@ -34,7 +34,7 @@ public class SharedLibrary {
     this.steps. withCredentials([string(credentialsId: 'docpwd', variable: 'dockerpass')])
                    {
                         sh "docker login -u gauravdocker1234 -p ${dockerpass}"
-                        sh "docker push gauravdocker1234/${this.steps.env.JOB_NAME}:${.this.steps.env.BUILD_NUMBER}"
+                        sh "docker push gauravdocker1234/${this.steps.env.JOB_NAME}:${this.steps.env.BUILD_NUMBER}"
                     }
     
       }
