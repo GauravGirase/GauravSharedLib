@@ -8,6 +8,6 @@ public class SharedLibrary {
   }
   
   public void startBuild(String repoUrl) {
-     git branch: 'main', url: '${repoUrl}'
+    steps.git"{ branch: 'main', url: '${repoUrl}'}"
   }
 }
