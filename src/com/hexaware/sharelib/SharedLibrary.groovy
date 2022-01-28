@@ -12,7 +12,7 @@ public class SharedLibrary {
     
     this.steps.git(
                 url           : "https://github.com/GauravGirase/springBootAppDemo.git",
-                branch        : "main'
+                branch        : "main"
             )
     
   }
