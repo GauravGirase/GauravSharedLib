@@ -7,7 +7,7 @@ public class SharedLibrary {
     this.steps = steps
   }
   
-  public void startBuild(String repoUrl) {
-    steps.git"{ branch: 'main', url: '${repoUrl}'}"
+  public void startBuild(Map config) {
+    steps.git"{ branch: '${Map.main}', url: '${Map.repoUrl}'}"
   }
 }
