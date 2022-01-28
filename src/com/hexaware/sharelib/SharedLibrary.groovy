@@ -31,7 +31,7 @@ public class SharedLibrary {
   
   void pushDockerImage(String jobName, String buildNumber){
     
-    this.steps. withCredentials([string(credentialsId: 'docpwd', variable: 'dockerpass')])
+    this.steps. withCredentials([this.steps.string(credentialsId: 'docpwd', variable: 'dockerpass')])
                    {
                         sh "docker login -u gauravdocker1234 -p ${dockerpass}"
                         sh "docker push gauravdocker1234/${jobName}:${jobName}"
