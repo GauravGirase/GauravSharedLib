@@ -36,8 +36,8 @@ public class SharedLibrary {
           passwordVariable: 'DOCKERPASS',
           usernameVariable: 'DOCKERUSERNAME'
         )]){
-               this.steps.echo "docker login -u ${DOCKERUSERNAME} -p ${DOCKERPASS}"
-               this.steps.echo "docker push gauravdocker1234/${jobName}:${buildNumber}"
+               this.steps.sh "docker login -u \${DOCKERUSERNAME} -p \${DOCKERPASS}"
+               this.steps.sh "docker push gauravdocker1234/${jobName}:${buildNumber}"
            }
       }
   
