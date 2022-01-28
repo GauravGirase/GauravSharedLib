@@ -8,10 +8,9 @@ public class SharedLibrary {
   }
   
   public void startBuild() {
-    steps.echo "Hello World..."
+    steps.sh '''
+    docker login -help
+    '''
   }
 }
 
-def gitcheckout(String repoUrl){
-    git branch: 'main', url: '${repoUrl}'
-}
