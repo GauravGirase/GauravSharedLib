@@ -25,7 +25,7 @@ public class SharedLibrary {
   
   void buildDockerImage(){
     
-    this.steps.sh "docker build -t gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER} ."
+    this.steps.sh "docker build -t gauravdocker1234/${this.steps.env.JOB_NAME}:${this.steps.env.BUILD_NUMBER} ."
     
   }
   
@@ -34,14 +34,14 @@ public class SharedLibrary {
     this.steps. withCredentials([string(credentialsId: 'docpwd', variable: 'dockerpass')])
                    {
                         sh "docker login -u gauravdocker1234 -p ${dockerpass}"
-                        sh "docker push gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+                        sh "docker push gauravdocker1234/${this.steps.env.JOB_NAME}:${.this.steps.env.BUILD_NUMBER}"
                     }
     
       }
   
   void removeLocalDockerImage(){
     
-    this.steps.sh "docker rmi gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+    this.steps.sh "docker rmi gauravdocker1234/${this.steps.env.JOB_NAME}:${this.steps.env.BUILD_NUMBER}"
     
   }
   
@@ -49,8 +49,8 @@ public class SharedLibrary {
     
     this.steps.sshagent(['dev-server']) {
                     // some block
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${env.JOB_NAME} || true"
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker run -p 9001:8080 -d --name ${env.JOB_NAME} gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${this.steps.env.JOB_NAME} || true"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker run -p 9001:8080 -d --name ${this.steps.env.JOB_NAME} gauravdocker1234/${this.steps.env.JOB_NAME}:${this.steps.env.BUILD_NUMBER}"
             }
     
       }
