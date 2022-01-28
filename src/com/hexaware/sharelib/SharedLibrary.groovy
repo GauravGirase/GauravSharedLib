@@ -55,12 +55,8 @@ public class SharedLibrary {
     
 //       }
   
-  void test(){
-    
-    if (this.steps.env && this.steps.BUILD_NUMBER){
-        this.steps.echo "current Build Number is : ${this.steps.BUILD_NUMBER}"
-    }else{
-      this.steps.echo "Something went wrong...!"
+  void test(String buildNumber){
+      this.steps.echo "Build Number is ${buildNumber}"
     }
     
     
