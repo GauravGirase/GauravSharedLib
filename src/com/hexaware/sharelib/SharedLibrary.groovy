@@ -8,6 +8,10 @@ public class SharedLibrary {
   }
   
   public void startBuild(String name) {
-    steps.echo "Hello, World! ${name}"
+    
+    steps.stage('Checkout') {
+            steps.git branch: 'main', url: '${name}'
+        }
+    
   }
 }
