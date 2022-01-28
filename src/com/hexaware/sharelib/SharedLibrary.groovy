@@ -57,7 +57,7 @@ public class SharedLibrary {
   
   void test(){
     
-    this.steps.echo "current Build Number is : ${this.steps.env.BUILD_NUMBER}"
+    this.steps.echo "current Build Number is : ${this.steps.BUILD_NUMBER}"
     
   }
   
