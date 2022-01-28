@@ -37,6 +37,12 @@ public class SharedLibrary {
                         sh "docker push gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
                     }
     
+      }
+  
+  void removeLocalDockerImage(){
+    
+    this.steps.sh "docker rmi gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+    
   }
   
 }
