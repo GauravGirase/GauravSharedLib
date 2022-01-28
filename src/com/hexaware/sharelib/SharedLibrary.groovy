@@ -33,8 +33,8 @@ public class SharedLibrary {
     
     this.steps.withCredentials([this.steps.usernamePassword(credentialsId: 'dockerhubcredentials', passwordVariable: 'DOCKERPASS', usernameVariable: 'DOCKERUSERNAME')])
                    {
-                        sh "docker login -u ${this.DOCKERUSERNAME} -p ${this.DOCKERPASS}"
-                        sh "docker push gauravdocker1234/${jobName}:${buildNumber}"
+                        this.steps.sh "docker login -u ${DOCKERUSERNAME} -p ${DOCKERPASS}"
+                        this.steps.sh "docker push gauravdocker1234/${jobName}:${buildNumber}"
                     }
     
       }
@@ -49,8 +49,8 @@ public class SharedLibrary {
     
     this.steps.sshagent(['dev-server']) {
                     // some block
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${jobName} || true"
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker run -p 9001:8080 -d --name ${jobName} gauravdocker1234/${jobName}:${buildNumber}"
+                    this.steps.sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${jobName} || true"
+                    this.steps.sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker run -p 9001:8080 -d --name ${jobName} gauravdocker1234/${jobName}:${buildNumber}"
             }
     
       }
