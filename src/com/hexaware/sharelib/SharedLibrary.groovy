@@ -28,20 +28,20 @@ public class SharedLibrary {
     this.steps.sh "docker build -t gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER} ."
     
   }
- 
- 
+  
+  void pushDockerImage(){
+    
+    this.steps. withCredentials([string(credentialsId: 'docpwd', variable: 'dockerpass')])
+                   {
+                        sh "docker login -u gauravdocker1234 -p ${dockerpass}"
+                        sh "docker push gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+                    }
+    
+  }
+  
 }
 
 
-this.steps.withCredentials([this.steps.usernamePassword(
-                credentialsId: this.usernamePasswordCredential,
-                passwordVariable: 'PASSWORD',
-                usernameVariable: 'USERNAME'
-            )]) {
-                // $USERNAME is only available in step.sh/echo, not "\${USERNAME}" directly
-                this.username = this.steps.sh(script: "echo \"\${USERNAME}\"", returnStdout: true).trim()
-                // FIXME: encode username/passsword?
-                this.steps.sh "echo \"https://\${USERNAME}:\${PASSWORD}@${GITHUB_DOMAIN}\" > ~/.git-credentials"
-            }
+
 
 
