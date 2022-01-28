@@ -8,7 +8,7 @@ public class SharedLibrary {
   }
   
   public void startBuild(Map config) {
-    steps.gitcheckout(config.repoUrl)
+    gitcheckout(config.repoUrl)
   }
 }
 
