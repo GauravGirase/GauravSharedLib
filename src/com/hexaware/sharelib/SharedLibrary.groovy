@@ -23,37 +23,37 @@ public class SharedLibrary {
     
   }
   
-//   void buildDockerImage(){
+  void buildDockerImage(String jobName, String buildNumber){
     
-//     this.steps.sh "docker build -t gauravdocker1234/${this.steps.env.JOB_NAME}:${this.steps.env.BUILD_NUMBER} ."
+    this.steps.sh "docker build -t gauravdocker1234/${jobName}:${buildNumber} ."
     
-//   }
+  }
   
-//   void pushDockerImage(){
+  void pushDockerImage(String jobName, String buildNumber){
     
-//     this.steps. withCredentials([string(credentialsId: 'docpwd', variable: 'dockerpass')])
-//                    {
-//                         sh "docker login -u gauravdocker1234 -p ${dockerpass}"
-//                         sh "docker push gauravdocker1234/${this.steps.env.JOB_NAME}:${this.steps.env.BUILD_NUMBER}"
-//                     }
+    this.steps. withCredentials([string(credentialsId: 'docpwd', variable: 'dockerpass')])
+                   {
+                        sh "docker login -u gauravdocker1234 -p ${dockerpass}"
+                        sh "docker push gauravdocker1234/${jobName}:${jobName}"
+                    }
     
-//       }
+      }
   
-//   void removeLocalDockerImage(){
+  void removeLocalDockerImage(String jobName, String buildNumber){
     
-//     this.steps.sh "docker rmi gauravdocker1234/${this.steps.env.JOB_NAME}:${this.steps.env.BUILD_NUMBER}"
+    this.steps.sh "docker rmi gauravdocker1234/${jobName}:${buildNumber}"
     
-//   }
+  }
   
-//    void applicationDeploy(){
+   void applicationDeploy(String jobName, String buildNumber){
     
-//     this.steps.sshagent(['dev-server']) {
-//                     // some block
-//                     sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${this.steps.env.JOB_NAME} || true"
-//                     sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker run -p 9001:8080 -d --name ${this.steps.env.JOB_NAME} gauravdocker1234/${this.steps.env.JOB_NAME}:${this.steps.env.BUILD_NUMBER}"
-//             }
+    this.steps.sshagent(['dev-server']) {
+                    // some block
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${jobName} || true"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker run -p 9001:8080 -d --name ${jobName} gauravdocker1234/${jobName}:${buildNumber}"
+            }
     
-//       }
+      }
   
   void test(String buildNumber){
       this.steps.echo "Build Number is ${buildNumber}"
