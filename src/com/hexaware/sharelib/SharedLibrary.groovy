@@ -57,12 +57,7 @@ public class SharedLibrary {
   
   void test(String buildNumber){
       this.steps.echo "Build Number is ${buildNumber}"
-    }
-    
-    
-    
-  }
-  
+    }  
 }
 
 
