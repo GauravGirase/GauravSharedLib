@@ -10,7 +10,7 @@ public class SharedLibrary {
   public void startBuild(String name) {
     
     steps.stage('Checkout') {
-            steps.git
+      steps.echo "Git url '${name}'"
         }
     
   }
