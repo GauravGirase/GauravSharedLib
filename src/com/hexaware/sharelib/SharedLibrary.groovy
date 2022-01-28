@@ -7,10 +7,7 @@ public class SharedLibrary {
     this.steps = steps
   }
   
-  public void startBuild(String name) {
-    
-    steps.stage('Checkout') {
-      steps.git("branch: 'main', url: '${name}'")
-     } 
+  public void startBuild(String repoUrl) {
+      steps.git "branch: 'main', url: '${repoUrl}'"
   }
 }
