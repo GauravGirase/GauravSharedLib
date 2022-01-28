@@ -19,7 +19,7 @@ public class SharedLibrary {
   
   void buildPackages(){
     
-    this.steps.sh "${this.steps.tool 'M3'} clean package"
+    this.steps.sh "mvn clean package"
     
   }
  
