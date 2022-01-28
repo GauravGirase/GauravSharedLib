@@ -16,6 +16,14 @@ public class SharedLibrary {
             )
     
   }
+  
+  void buildPackages(){
+    
+    this.steps.sh "${this.steps.tool 'Maven'} clean package"
+    
+  }
+ 
  
 }
+
 
