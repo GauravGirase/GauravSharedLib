@@ -33,3 +33,15 @@ public class SharedLibrary {
 }
 
 
+this.steps.withCredentials([this.steps.usernamePassword(
+                credentialsId: this.usernamePasswordCredential,
+                passwordVariable: 'PASSWORD',
+                usernameVariable: 'USERNAME'
+            )]) {
+                // $USERNAME is only available in step.sh/echo, not "\${USERNAME}" directly
+                this.username = this.steps.sh(script: "echo \"\${USERNAME}\"", returnStdout: true).trim()
+                // FIXME: encode username/passsword?
+                this.steps.sh "echo \"https://\${USERNAME}:\${PASSWORD}@${GITHUB_DOMAIN}\" > ~/.git-credentials"
+            }
+
+
