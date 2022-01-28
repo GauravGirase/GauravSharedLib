@@ -7,7 +7,7 @@ public class SharedLibrary {
     this.steps = steps
   }
   
-  public void startBuild() {
-    steps.echo "Hello, World!"
+  public void startBuild(String name) {
+    steps.echo "Hello, World! ${name}"
   }
 }
