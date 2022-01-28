@@ -9,7 +9,7 @@ public class SharedLibrary {
   
   public void startBuild() {
     steps.sh '''
-    docker login -help
+    docker login --help
     '''
   }
 }
