@@ -1,12 +1,12 @@
 package com.hexaware.sharedlib;
-// import org.yaml.snakeyaml.Yaml
+import org.yaml.snakeyaml.Yaml
 // import org.yaml.YamlSlurper
 
 
 
 public class SharedLibrary {
   def steps
-//   def conf = new Yaml().load(new FileReader("resources/config.yml"))
+  def conf = new Yaml().load(new FileReader("/resources/config.yml"))
 //   def yaml = new YamlSlurper().parse(new File("./config.yaml"))
 
   
