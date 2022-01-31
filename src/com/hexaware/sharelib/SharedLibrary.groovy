@@ -65,7 +65,7 @@ public class SharedLibrary {
   
   void test(){
     def config = this.steps.libraryResource 'config.yml'
-    this.steps.echo "The config content ${config}"
+    this.steps.echo "The config content ${config.git}"
     }  
 }
 
