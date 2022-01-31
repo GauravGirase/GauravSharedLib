@@ -5,7 +5,7 @@ import org.yaml.snakeyaml.Yaml
 
 public class SharedLibrary {
   def steps
-  def conf = new Yaml().load(new FileReader('config.yaml'))
+  def conf = new Yaml().load(new FileReader('com/hexaware/sharelib/config.yaml'))
   
   
   SharedLibrary(steps) {
