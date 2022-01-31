@@ -12,9 +12,14 @@ public class SharedLibrary {
   
   SharedLibrary(steps) {
     this.steps = steps
+    this.readConfigFile()
   }
   
-  pipelineConfig  = this.steps.readYaml(text: this.steps.libraryResource(configFile))
+  
+  void readConfigFile(){
+    pipelineConfig  = this.steps.readYaml(text: this.steps.libraryResource(this.configFile))
+  }
+  
   
   void cloneRepository(){
     
@@ -66,7 +71,7 @@ public class SharedLibrary {
       }
   
   void test(){    
-      this.steps.echo "The config content ${pipelineConfig.git.url}"
+      this.steps.echo "The config content ${this.pipelineConfig.git.url}"
     }  
 }
 
