@@ -1,4 +1,17 @@
 git:
-  url:                    "https://github.com/GauravGirase/springBootAppDemo.git"
-  branch:                 "main"
+  url: "https://github.com/GauravGirase/springBootAppDemo.git"
+  branch: "main"
+  credentials: "gitCredentials"
+
+docker:
+  port: 9001
+  dockerfile: .
+  dockerCredentials: "dockerhubcredentials"
+  
+ssh:
+  host-ip: "172.31.34.100"
+  host-user: "ec2-user"
+  
+  
+  
   
