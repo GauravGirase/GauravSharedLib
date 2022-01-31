@@ -7,12 +7,8 @@ import groovy.yaml.YamlSlurper
 public class SharedLibrary {
   def steps
 //   def conf = new Yaml().load(new FileReader(''))
-  def yamlFile = new File("./config.yaml")
-  yamlFile.withReader { reader ->
-    def yaml = new YamlSlurper().parse(reader)
-    }
+  def yaml = new YamlSlurper().parse(new File("./config.yaml"))
 
-  
   
   SharedLibrary(steps) {
     this.steps = steps
