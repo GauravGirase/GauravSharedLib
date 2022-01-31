@@ -12,7 +12,6 @@ public class SharedLibrary {
   
   SharedLibrary(steps) {
     this.steps = steps
-    this.readConfigFile()
   }
   
   
