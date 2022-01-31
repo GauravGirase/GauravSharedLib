@@ -6,7 +6,7 @@ import org.yaml.snakeyaml.Yaml
 
 public class SharedLibrary {
   def steps
-  def conf = new Yaml().load(new FileReader("/resources/config.yml"))
+  def conf = new Yaml().load(new FileReader("/target"))
 //   def yaml = new YamlSlurper().parse(new File("./config.yaml"))
 
   
