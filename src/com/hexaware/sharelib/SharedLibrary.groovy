@@ -63,7 +63,7 @@ public class SharedLibrary {
     
       }
   
-  void test(Sring settings){
+  void test(String settings){
     this.steps.echo"The setting ${settings}"
     }  
 }
