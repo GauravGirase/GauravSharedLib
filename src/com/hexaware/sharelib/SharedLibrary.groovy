@@ -1,5 +1,5 @@
 package com.hexaware.sharedlib;
-import org.yaml.snakeyaml.Yaml
+// import org.yaml.snakeyaml.Yaml
 // import groovy.yaml.YamlSlurper
 
 
@@ -62,8 +62,9 @@ public class SharedLibrary {
    void applicationDeploy(String jobName, String buildNumber){
     
     this.steps.sshagent(['dev-server']) {
-                    // some block
-                    this.steps.sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${jobName} || true"
+                    
+//                     this.steps.sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${jobName} || true"
+                    this.steps.sh "ssh -o StrictHostKeyChecking=no ${this.pipelineConfig.ssh.host_user}@${this.pipelineConfig.ssh.host_ip} docker rm -f ${jobName} || true"
                     this.steps.sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker run -p 9001:8080 -d --name ${jobName} gauravdocker1234/${jobName}:${buildNumber}"
             }
     
@@ -73,9 +74,3 @@ public class SharedLibrary {
       this.steps.echo "The config content ${this.pipelineConfig.git.url}"
     }  
 }
-
-
-// url           : "https://github.com/GauravGirase/springBootAppDemo.git",
-
-
-
