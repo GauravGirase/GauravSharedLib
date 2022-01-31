@@ -64,7 +64,7 @@ public class SharedLibrary {
       }
   
   void test(){
-    this.steps.echo "Reading confige file conntent }"
+    this.steps.sh"ls -la"
     }  
 }
 
