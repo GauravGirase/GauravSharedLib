@@ -61,7 +61,7 @@ public class SharedLibrary {
       }
   
   void test(){
-    this.steps.echo "Reading confige file conntent is ${this.steps.env.BUILD_NUMBER}"
+    this.steps.echo "Reading confige file conntent is ${env.BUILD_NUMBER}"
     }  
 }
 
