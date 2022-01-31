@@ -68,7 +68,7 @@ public class SharedLibrary {
 //     def conf = new YamlSlurper().parseText(config)
 //     this.steps.echo "The config content ${conf.git.url}"
      def configFile          = 'config.yml'
-     def pipelineConfig  = readYaml(text: libraryResource(configFile))
+     def pipelineConfig  = this.steps.readYaml(text: this.steps.libraryResource(configFile))
 //     def pipelineConfig  = this.steps.readYaml(text: this.steps.libraryResource 'config.yml')
       this.steps.echo "The config content ${pipelineConfig.git.url}"
 
