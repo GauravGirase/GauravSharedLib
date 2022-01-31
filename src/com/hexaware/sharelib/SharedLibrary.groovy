@@ -1,7 +1,7 @@
 package com.hexaware.sharedlib;
-import org.yaml.snakeyaml.Yaml
+// import org.yaml.snakeyaml.Yaml
 
-def config = new Yaml().load(new FileReader('./config.yaml'))
+// def config = new Yaml().load(new FileReader('./config.yaml'))
 
 public class SharedLibrary {
   def steps
@@ -61,7 +61,7 @@ public class SharedLibrary {
       }
   
   void test(){
-      this.steps.echo "Reading confige file conntent is ${config.git}"
+      this.steps.echo "Reading confige file conntent is"
     }  
 }
 
