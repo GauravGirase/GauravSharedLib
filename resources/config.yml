@@ -10,8 +10,8 @@ docker:
   dockerCredentials: "dockerhubcredentials"
   
 ssh:
-  host-ip: "172.31.34.100"
-  host-user: "ec2-user"
+  host_ip: "172.31.34.100"
+  host_user: "ec2-user"
   
   
   
