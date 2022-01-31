@@ -43,7 +43,7 @@ public class SharedLibrary {
   
   void removeLocalDockerImage(String jobName, String buildNumber){
     
-    this.steps.echo "docker rmi gauravdocker1234/${jobName}:${buildNumber}"
+    this.steps.sh "docker rmi gauravdocker1234/${jobName}:${buildNumber}"
     
   }
   
