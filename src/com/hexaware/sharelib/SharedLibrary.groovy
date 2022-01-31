@@ -6,7 +6,7 @@ import org.yaml.snakeyaml.Yaml
 
 public class SharedLibrary {
   def steps
-  def conf = new Yaml().load(new FileReader("resources/config.yml"))
+//   def conf = new Yaml().load(new FileReader("resources/config.yml"))
 //   def yaml = new YamlSlurper().parse(new File("./config.yaml"))
 
   
@@ -64,7 +64,7 @@ public class SharedLibrary {
       }
   
   void test(){
-    this.steps.echo "Reading confige file conntent is ${env.BUILD_NUMBER}"
+    this.steps.echo "Reading confige file conntent }"
     }  
 }
 
