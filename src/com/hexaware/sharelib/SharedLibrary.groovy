@@ -1,6 +1,6 @@
 package com.hexaware.sharedlib;
 import org.yaml.snakeyaml.Yaml
-// import org.yaml.YamlSlurper
+import org.yaml.YamlSlurper
 
 
 
@@ -65,7 +65,10 @@ public class SharedLibrary {
   
   void test(){
     def config = this.steps.libraryResource 'config.yml'
-    this.steps.echo "The config content ${config.getClass()}"
+    def conf = new YamlSlurper().parseText(config)
+    this.steps.echo "The config content ${conf.git.url}"
+
+    
     }  
 }
 
