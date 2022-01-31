@@ -1,6 +1,6 @@
 package com.hexaware.sharedlib;
 import org.yaml.snakeyaml.Yaml
-import org.yaml.YamlSlurper
+import groovy.yaml.YamlSlurper
 
 
 
