@@ -6,12 +6,13 @@ import org.yaml.snakeyaml.Yaml
 
 public class SharedLibrary {
   def steps
-//   def conf = new Yaml().load(new FileReader("/target"))
-//   def yaml = new YamlSlurper().parse(new File("./config.yaml"))
+  def pipelineConfig 
+  def configFile = 'config.yml'
 
   
   SharedLibrary(steps) {
     this.steps = steps
+    this.pipelineConfig  = this.steps.readYaml(text: this.steps.libraryResource(configFile))
   }
   
   void cloneRepository(){
@@ -63,17 +64,8 @@ public class SharedLibrary {
     
       }
   
-  void test(){
-//     def config = this.steps.libraryResource 'config.yml'
-//     def conf = new YamlSlurper().parseText(config)
-//     this.steps.echo "The config content ${conf.git.url}"
-     def configFile          = 'config.yml'
-     def pipelineConfig  = this.steps.readYaml(text: this.steps.libraryResource(configFile))
-//     def pipelineConfig  = this.steps.readYaml(text: this.steps.libraryResource 'config.yml')
-      this.steps.echo "The config content ${pipelineConfig.git.url}"
-
-
-    
+  void test(){    
+      this.steps.echo "The config content ${this.pipelineConfig.git.url}"
     }  
 }
 
