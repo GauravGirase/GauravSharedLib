@@ -23,8 +23,8 @@ public class SharedLibrary {
   void cloneRepository(){
     
     this.steps.git(
-                url           : "https://github.com/GauravGirase/springBootAppDemo.git",
-                branch        : "main"
+                url           : "${this.pipelineConfig.git.url}",
+                branch        : "${this.pipelineConfig.git.branch}"
             )
     
   }
@@ -75,6 +75,7 @@ public class SharedLibrary {
 }
 
 
+// url           : "https://github.com/GauravGirase/springBootAppDemo.git",
 
 
 
