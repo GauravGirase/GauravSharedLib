@@ -5,7 +5,7 @@ import org.yaml.snakeyaml.Yaml
 
 public class SharedLibrary {
   def steps
-  def conf = new Yaml().load(new FileReader('.conf.yml'))
+  def conf = new Yaml().load(new FileReader('../resources/sample.txt'))
   
   
   SharedLibrary(steps) {
