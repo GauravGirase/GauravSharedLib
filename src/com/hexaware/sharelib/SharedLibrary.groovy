@@ -63,8 +63,8 @@ public class SharedLibrary {
     
       }
   
-  void test(){
-    this.steps.sh"ls -la"
+  void test(Sring settings){
+    this.steps.echo"The setting ${settings}"
     }  
 }
 
