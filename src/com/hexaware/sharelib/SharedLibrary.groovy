@@ -65,7 +65,7 @@ public class SharedLibrary {
                     
 //                     this.steps.sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker rm -f ${jobName} || true"
                     this.steps.sh "ssh -o StrictHostKeyChecking=no ${this.pipelineConfig.ssh.host_user}@${this.pipelineConfig.ssh.host_ip} docker rm -f ${jobName} || true"
-                    this.steps.sh "ssh -o StrictHostKeyChecking=no ${this.pipelineConfig.ssh.host_user}@${this.pipelineConfig.ssh.host_ip} docker run -p ${this.pipelineConfig.ssh.port}:8080 -d --name ${jobName} gauravdocker1234/${jobName}:${buildNumber}"
+                    this.steps.sh "ssh -o StrictHostKeyChecking=no ${this.pipelineConfig.ssh.host_user}@${this.pipelineConfig.ssh.host_ip} docker run -p ${this.pipelineConfig.docker.port}:8080 -d --name ${jobName} gauravdocker1234/${jobName}:${buildNumber}"
 //                     this.steps.sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.100 docker run -p 9001:8080 -d --name ${jobName} gauravdocker1234/${jobName}:${buildNumber}"
             }
     
