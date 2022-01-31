@@ -5,7 +5,7 @@ git:
   credentials: "gitCredentials"
 
 docker:
-  port: 9001
+  port: "9001"
   dockerfile: .
   dockerCredentials: "dockerhubcredentials"
   
