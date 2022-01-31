@@ -63,8 +63,9 @@ public class SharedLibrary {
     
       }
   
-  void test(String settings){
-    this.steps.echo"The setting ${settings}"
+  void test(){
+    def config = this.steps.libraryResource 'config.yml'
+    this.steps.echo "The config content ${config}"
     }  
 }
 
