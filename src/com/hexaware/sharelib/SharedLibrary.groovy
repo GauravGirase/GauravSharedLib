@@ -1,4 +1,7 @@
 package com.hexaware.sharedlib;
+import org.yaml.snakeyaml.Yaml
+
+def config = new Yaml().load(new FileReader('./config.yaml'))
 
 public class SharedLibrary {
   def steps
@@ -57,8 +60,8 @@ public class SharedLibrary {
     
       }
   
-  void test(String buildNumber){
-      this.steps.echo "Build Number is ${buildNumber}"
+  void test(){
+      this.steps.echo "Reading confige file conntent is ${config.git}"
     }  
 }
 
