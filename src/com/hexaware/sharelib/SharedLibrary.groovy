@@ -117,6 +117,6 @@ public class SharedLibrary {
   
   void test(){    
 //       this.steps.echo "The config content ${this.pipelineConfig.git.url}"
-      this.steps.echo "The config content ${this.env.BUILD_NUMBER}"
+      this.steps.echo "The config content \${this.env.BUILD_NUMBER}"
     }  
 }
