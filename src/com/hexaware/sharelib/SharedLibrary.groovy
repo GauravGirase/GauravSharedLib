@@ -11,6 +11,7 @@ public class SharedLibrary {
      */
   
   def steps
+  def env
   
   /**
      * Reference to the yaml configurations.
@@ -39,6 +40,7 @@ public class SharedLibrary {
      */
   SharedLibrary(steps) {
     this.steps = steps
+    this.env = env
   }
   
   /**
@@ -118,6 +120,6 @@ public class SharedLibrary {
   
   void test(){    
 //       this.steps.echo "The config content ${this.pipelineConfig.git.url}"
-      this.steps.echo "The config content ${this.steps.env.BUILD_NUMBER}"
+      this.steps.echo "The config content ${this.env.BUILD_NUMBER}"
     }  
 }
