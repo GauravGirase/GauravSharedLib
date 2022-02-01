@@ -1,13 +1,9 @@
 package com.hexaware.sharedlib;
-import groovy.transform.Field;
-// import org.yaml.snakeyaml.Yaml
-// import groovy.yaml.YamlSlurper
-
 
 
 public class SharedLibrary {
    /**
-     * Reference to the groovy pipeline variable.
+     * Reference to the groovy pipeline variables.
      */
   
   def steps
@@ -30,13 +26,6 @@ public class SharedLibrary {
      *
      * When invoking from a Jenkins pipeline script, the Pipeline must be passed
      * the current environment of the Jenkinsfile to have access to the steps.
-     *
-     * @Example
-     * <pre>
-     * def sharedLibObj = new SharedLibrary(this)
-     * </pre>
-     *
-     * @param steps    The workflow steps object provided by the Jenkins pipeline
      */
   SharedLibrary(steps,env) {
     this.steps = steps
@@ -45,7 +34,6 @@ public class SharedLibrary {
   
   /**
      * Read resource file
-     * @return             the file content
      */
   void readConfigFile(){
     pipelineConfig  = this.steps.readYaml(text: this.steps.libraryResource(this.configFile))
@@ -119,7 +107,7 @@ public class SharedLibrary {
       }
   
   void test(){    
-      this.steps.echo "The config content ${this.env.JOB_NAME}"
-      this.steps.echo "The config content ${this.env.BUILD_NUMBER}"
+      this.steps.echo "The Job name is ${this.env.JOB_NAME}"
+      this.steps.echo "The Build Number ${this.env.BUILD_NUMBER}"
     }  
 }
