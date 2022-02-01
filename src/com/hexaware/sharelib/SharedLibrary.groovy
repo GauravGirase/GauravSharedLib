@@ -38,7 +38,7 @@ public class SharedLibrary {
      *
      * @param steps    The workflow steps object provided by the Jenkins pipeline
      */
-  SharedLibrary(steps) {
+  SharedLibrary(steps,env) {
     this.steps = steps
     this.env = env
   }
