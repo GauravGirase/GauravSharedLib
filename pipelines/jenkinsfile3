@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    
+
+    stages {
+        stage('CheckOut') {
+            steps {
+                git branch: 'main', url: 'https://github.com/spring-projects/spring-petclinic.git'
+
+            }
+        }
+        stage('Build') {
+            tools {
+                 // Install the Maven version configured as "M3" and add it to the path.
+                    maven "M3"
+                 }
+            steps {
+                sh 'mvn clean package'
+
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh "docker build -t gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([string(credentialsId: 'docpwd', variable: 'docker-pwd')]) {
+                sh "docker login -u gauravdocker1234 -p ${docker-pwd}"
+                }
+                sh "docker push gauravdocker1234/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+               
+            }
+        }
+    }
+    
+}
