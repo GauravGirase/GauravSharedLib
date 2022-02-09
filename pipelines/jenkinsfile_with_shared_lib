@@ -1,0 +1,66 @@
+@Library("GaurravSharedLib") _
+import com.hexaware.sharelib.SharedLibrary
+
+def obj = new SharedLibrary(steps)
+
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('CheckOut') {
+            steps {
+                script{
+                    obj.cloneRepository()
+                }
+            }
+        }
+        stage('Print current Build Number') {
+            steps {
+                script{
+                    obj.test(env.BUILD_NUMBER)
+                }
+            }
+        }
+        stage('Build') {
+            tools {
+                    maven "M3"
+                 }
+            steps {
+                script{
+                    obj.buildPackages()
+                }
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script{
+                    obj.buildDockerImage(env.JOB_NAME,env.BUILD_NUMBER)
+                }
+            }
+        }
+        stage('Push Docker image') {
+            steps {
+                script{
+                    obj.pushDockerImage(env.JOB_NAME,env.BUILD_NUMBER)
+                }
+            }
+        }
+        stage('Removing Docker image from local') {
+            steps {
+                script{
+                    obj.removeLocalDockerImage(env.JOB_NAME,env.BUILD_NUMBER)
+                }
+            }
+        }
+        stage('Deploy An application') {
+            steps {
+                script{
+                    obj.applicationDeploy(env.JOB_NAME,env.BUILD_NUMBER)
+                }
+            }
+        }
+    }
+    
+}
