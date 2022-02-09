@@ -1,0 +1,65 @@
+# Pipeline as a code
+
+pipeline {
+    agent any
+
+    
+
+    stages {
+         stage('CheckOut') {
+             steps {
+               git branch: 'main', url: 'https://github.com/GauravGirase/springBootAppDemo.git'
+
+             }
+         }
+         stage('Build') {
+             tools {
+                     maven "M3"
+                 }
+            steps {
+                sh 'mvn clean package'
+
+            }
+        }
+        
+        stage('Copying target files to Docker server') {
+           
+            steps {
+                script{
+                    def remote = [:]
+                       remote.name = "e2-user"
+                       remote.host = "172.31.46.26"
+                       remote.allowAnyHosts = true
+                       remote.name = 'ec2-user'
+                       remote.user = 'root'
+                       remote.password = 'Gaurav@123'
+                       sshPut remote: remote, from: '/var/lib/jenkins/workspace/BuildService', into: '/home/ec2-user/'
+                }
+            }
+        }
+        stage('Creating an Image') {
+           steps {
+               
+             def dockerbuild = ''
+    
+               sshagent(['dev-server']) {
+                    // some block
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.46.26 docker build -t gaurav/my-app:1.0 /home/ec2-user/BuildService/"
+                }
+            }
+        }
+stage('Pushing Docker repo to DockerHub') {
+           steps {
+               withCredentials([string(credentialsId: 'docpwd', variable: 'docker-pwd')]) {
+                sh "docker login -u gauravdocker1234 -p ${docker-pwd}"
+                sshagent(['dev-server']) {
+                    // some block
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.46.26 docker push gauravdocker1234/gaurav/my-app:1.0"
+                }
+                }
+               
+            }
+        }
+    }
+    
+}
